@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row mt-4">
+
+    <!-- Image -->
+
+    <div class="col-lg-7">
+
+        <div class="card shadow-lg border-0 overflow-hidden">
+
+            <img src="{{ url_for('static', filename='images/' + image.image_path) }}"
+                class="card-img-top"
+                alt="{{ image.title }}">
+
+        </div>
+
+    </div>
+
+
+    <!-- Information -->
+
+    <div class="col-lg-5">
+
+        <div class="card shadow-lg border-0 h-100">
+
+            <div class="card-body">
+
+                <h2 class="fw-bold">
+
+                    {{ image.title }}
+
+                </h2>
+
+                <span class="badge bg-info fs-6 mt-2">
+
+                    {{ image.category }}
+
+                </span>
+
+                <hr>
+
+                <h5>
+
+                    <i class="bi bi-card-text"></i>
+
+                    Description
+
+                </h5>
+
+                <p class="text-muted">
+
+                    {{ image.description }}
+
+                </p>
+
+                <hr>
+
+                <h5>
+
+                    <i class="bi bi-tags-fill"></i>
+
+                    Tags
+
+                </h5>
+
+                <p>
+
+                    {% for tag in image.tags.split(',') %}
+
+                        <span class="badge bg-secondary me-1">
+
+                            {{ tag.strip() }}
+
+                        </span>
+
+                    {% endfor %}
+
+                </p>
+
+                <hr>
+
+                <h5>
+
+                    <i class="bi bi-camera-fill"></i>
+
+                    Photographer
+
+                </h5>
+
+                <p class="mb-1">
+
+                    <strong>{{ image.name }}</strong>
+
+                </p>
+
+                <p class="text-muted">
+
+                    {{ image.email }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Extra Information -->
+
+<div class="card shadow border-0 mt-5">
+
+    <div class="card-body">
+
+        <h4 class="mb-4">
+
+            <i class="bi bi-info-circle-fill text-primary"></i>
+
+            Image Information
+
+        </h4>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <h6>Category</h6>
+
+                <p>{{ image.category }}</p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h6>Photographer Code</h6>
+
+                <p>{{ image.photographer_code }}</p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h6>Image Path</h6>
+
+                <p class="text-break">
+
+                    {{ image.image_path }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Buttons -->
+
+<div class="text-center mt-5">
+
+    <a href="/images"
+       class="btn btn-secondary btn-lg me-3">
+
+        <i class="bi bi-arrow-left"></i>
+
+        Back
+
+    </a>
+
+    <a href="/person/{{ image.photographer_code }}"
+       class="btn btn-info btn-lg">
+
+        <i class="bi bi-person-fill"></i>
+
+        Photographer Profile
+
+    </a>
+
+</div>
+
+{% endblock %}

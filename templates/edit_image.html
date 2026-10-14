@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-4">
+
+
+<div class="col-lg-8">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body p-4">
+
+            <!-- Header -->
+
+            <div class="text-center mb-4">
+
+                <i class="bi bi-pencil-square text-info"
+                   style="font-size: 50px;"></i>
+
+                <h2 class="mt-2">
+                    Edit Image
+                </h2>
+
+                <p class="text-muted">
+                    Update your image and its information.
+                </p>
+
+            </div>
+
+
+            <!-- Current Image -->
+
+            <div class="text-center mb-4">
+
+                <p class="fw-semibold">
+                    Current Image
+                </p>
+
+                <img
+                    src="{{ url_for('static', filename='images/' + image.image_path) }}"
+                    alt="{{ image.title }}"
+                    class="img-fluid rounded shadow-sm"
+                    style="max-height: 250px;">
+
+            </div>
+
+
+            <!-- Form -->
+
+            <form method="POST"
+                  enctype="multipart/form-data">
+
+
+                <!-- Change Image -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Change Image
+                    </label>
+
+                    <input
+                        type="file"
+                        name="image"
+                        class="form-control"
+                        accept="image/*">
+
+                    <div class="form-text">
+                        Leave this empty if you want to keep the current image.
+                    </div>
+
+                </div>
+
+
+                <!-- Title -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Image Title
+                    </label>
+
+                    <input
+                        type="text"
+                        name="title"
+                        class="form-control"
+                        value="{{ image.title }}"
+                        required>
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Category
+                    </label>
+
+                    <input
+                        type="text"
+                        name="category"
+                        class="form-control"
+                        value="{{ image.category }}"
+                        required>
+
+                </div>
+
+
+                <!-- Tags -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Tags
+                    </label>
+
+                    <input
+                        type="text"
+                        name="tags"
+                        class="form-control"
+                        value="{{ image.tags }}">
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Description
+                    </label>
+
+                    <textarea
+                        name="description"
+                        class="form-control"
+                        rows="6"
+                        required>{{ image.description }}</textarea>
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="d-flex gap-2">
+
+                    <a href="{{ url_for('person', code=session['user_code']) }}"
+                       class="btn btn-outline-secondary w-50">
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Cancel
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-info w-50">
+
+                        <i class="bi bi-check-circle"></i>
+
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

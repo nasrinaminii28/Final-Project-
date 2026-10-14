@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-4">
+
+
+<div class="col-lg-8">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body p-4">
+
+            <div class="text-center mb-4">
+
+                <i class="bi bi-pencil-square text-success"
+                   style="font-size: 50px;"></i>
+
+                <h2 class="mt-2">
+
+                    Write an Article
+
+                </h2>
+
+                <p class="text-muted">
+
+                    Share your ideas and knowledge.
+
+                </p>
+
+            </div>
+
+
+            <form method="POST">
+
+                <!-- Title -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Article Title
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="title"
+                        class="form-control"
+                        placeholder="Enter article title"
+                        required>
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Category
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="category"
+                        class="form-control"
+                        placeholder="Enter category"
+                        required>
+
+                </div>
+
+
+                <!-- Keywords -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Keywords
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="keywords"
+                        class="form-control"
+                        placeholder="Example: Python, Programming, Flask">
+
+                </div>
+
+
+                <!-- Content -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Article Content
+
+                    </label>
+
+                    <textarea
+                        name="content"
+                        class="form-control"
+                        rows="10"
+                        placeholder="Write your article here..."
+                        required></textarea>
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="d-flex gap-2">
+
+                    <a href="{{ url_for('person', code=session['user_code']) }}"
+                       class="btn btn-outline-secondary w-50">
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Cancel
+
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn btn-success w-50">
+
+                        <i class="bi bi-send"></i>
+
+                        Publish Article
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}
